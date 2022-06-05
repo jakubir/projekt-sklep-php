@@ -1,0 +1,634 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e5e5e5;
+  color: #1e3030;
+  font-size: 24px;
+  font-family: Roboto;
+  position: relative;
+  top: 63px;
+}
+nav {
+  background-color: #2c4444;
+  color: snow;
+  padding: 15px 200px;
+  font-size: 28px;
+  position: fixed;
+  top: 0px;
+  width: calc(100% - 400px);
+  z-index: 5;
+}
+nav > .container {
+  height: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .logo a {
+  text-decoration: none;
+  color: snow;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 130px;
+}
+.menu li img {
+  height: 1.2em;
+  position: relative;
+  top: 0.1em;
+  padding: 5px;
+}
+.menu .kreska {
+  width: 1.5px;
+  height: 1.4em;
+  background-color: lightgrey;
+}
+.menu-plus {
+  position: fixed;
+  right: 120px;
+  top: 70px;
+  width: calc(100% / 4 - 200px);
+  height: 40vh;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  display: none;
+}
+.menu-u:after,
+.menu-u:before,
+.menu-k:after,
+.menu-k:before {
+  bottom: 100%;
+  position: absolute;
+  border: solid transparent;
+  content: " ";
+}
+.menu-u:after,
+.menu-u:before {
+  left: 32.5%;
+}
+.menu-k:after,
+.menu-k:before {
+  right: 36%;
+}
+.menu-u:after {
+  border-width: 20px;
+  margin-left: -20px;
+  border-bottom-color: #e5e5e5;
+}
+.menu-k:after {
+  border-width: 20px;
+  margin-right: -20px;
+  border-bottom-color: #e5e5e5;
+}
+.menu-u:before {
+  border-width: 21px;
+  margin-left: -21px;
+  border-bottom-color: #8c8c8c;
+}
+.menu-k:before {
+  border-width: 21px;
+  margin-right: -21px;
+  border-bottom-color: #8c8c8c;
+}
+.menu ul li img[alt="Konto"]:hover ~ .menu-u,
+.menu ul li img[alt="Koszyk"]:hover ~ .menu-k,
+.menu-u:hover,
+.menu-k:hover {
+  display: flex;
+}
+.menu-u,
+.menu-k {
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #1e3030;
+}
+.menu-u > hr,
+.menu-k > hr {
+  width: 70%;
+  background-color: #8c8c8c;
+}
+.menu-u form,
+.menu-k form {
+  width: 70%;
+}
+.menu-u input,
+.menu-k input,
+.usun-koszyk,
+.edytuj-koszyk {
+  width: 100%;
+  height: 35px;
+  border-radius: 20px;
+  line-height: 17px;
+  border: 2px solid #2c4444;
+  font-size: 0.6em;
+  transition: 0.2s;
+}
+.menu-u input[value="Zaloguj się"],
+.menu-u input[value="Wyloguj się"] {
+  background-color: #2c4444;
+  color: snow;
+}
+.menu-u input[value="Twoje konto"],
+.menu-u input[value="Statystyki sklepu"],
+.menu-k input[value="Przejdź do koszyka"],
+.edytuj-koszyk {
+  background-color: snow;
+  color: #2c4444;
+}
+.menu-u input[value="Zaloguj się"]:hover,
+.menu-u input[value="Wyloguj się"]:hover {
+  background-color: snow;
+  color: #2c4444;
+}
+.menu-u input[value="Twoje konto"]:hover,
+.menu-u input[value="Statystyki sklepu"]:hover,
+.menu-k input[value="Przejdź do koszyka"]:hover,
+.edytuj-koszyk:hover {
+  background-color: #2c4444;
+  color: snow;
+}
+.menu-u input[value="Usuń konto"],
+.usun-koszyk {
+  background-color: #bd0404;
+  color: snow;
+  border: 2px solid #bd0404;
+}
+.menu-u input[value="Usuń konto"]:hover,
+.usun-koszyk:hover {
+  background-color: snow;
+  color: #bd0404;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 42vh;
+  grid-gap: 20px;
+  padding: 50px 200px;
+}
+.filtry-container {
+  grid-column: 1 / 4;
+  grid-row: 1 / -1;
+}
+.filtry {
+  width: calc(100% - 40px);
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px;
+}
+h3 {
+  align-self: center;
+}
+.filtry form {
+  display: flex;
+  flex-direction: column;
+}
+.filtry h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+label {
+  margin-left: 10px;
+}
+.filtry form input[type="submit"] {
+  align-self: center;
+  width: 70%;
+  height: 35px;
+  border-radius: 20px;
+  line-height: 17px;
+  border: 2px solid #2c4444;
+  font-size: 0.7em;
+  transition: 0.2s;
+  background-color: #2c4444;
+  color: snow;
+  margin-top: 30px;
+  margin-bottom: 1.66em;
+}
+.filtry form input[type="submit"]:hover {
+  background-color: snow;
+  color: #2c4444;
+}
+.filtry form input[type="number"],
+.filtry form input[type="date"] {
+  width: 15%;
+  height: 25px;
+  border-radius: 8px;
+  border: 2px solid #2c4444;
+  font-size: 0.8em;
+  line-height: 17px;
+  color: #2c4444;
+  background-color: snow;
+  text-align: center;
+}
+.filtry form input[type="date"] {
+  width: 43%;
+}
+
+main div.formularz {
+  grid-column: 4/10;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+}
+main div.formularz > form {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 2px solid #b8b8b8;
+  padding: 30px 25px;
+  color: #2c4444;
+}
+main div.formularz > form h2 {
+  margin: 0 0 10px;
+  font-size: 1.6em;
+}
+main div.formularz > form input[type="text"],
+main div.formularz > form input[type="password"],
+main div.formularz > form input[type="email"],
+input[type="email"].submit-oh,
+input[type="text"].submit-oh,
+input[type="number"].submit-oh {
+  border-radius: 12px;
+  border: 2px solid #b8b8b8;
+  background-color: snow;
+  width: 85%;
+  height: 50px;
+  line-height: 25px;
+  font-size: 1em;
+  color: #2c4444;
+  padding-left: 10px;
+}
+input[type="email"].submit-oh,
+input[type="text"].submit-oh,
+input[type="number"].submit-oh {
+  width: 40%;
+  height: 1.9em;
+}
+main div.formularz > form input[type="submit"],
+form.kup input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  line-height: 25px;
+  border: 2px solid #2c4444;
+  background-color: #2c4444;
+  font-size: 1em;
+  color: snow;
+  transition: 0.2s;
+}
+main div.formularz > form input[type="submit"]:hover,
+form.kup input[type="submit"]:hover {
+  color: #2c4444;
+  background-color: snow;
+}
+form.kup input[type="submit"] {
+  margin-top: 50px;
+}
+form.kup {
+  grid-column: 2/12;
+}
+
+main div.formularz > form > label {
+  display: flex;
+  align-content: center;
+  cursor: pointer;
+  line-height: 36px;
+}
+main div.formularz > form label input[type="checkbox"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+main div.formularz > form label input[type="checkbox"] ~ span {
+  background-color: snow;
+  border: 2px solid #b8b8b8;
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  padding: initial;
+  position: relative;
+  margin-right: 15px;
+  display: inline-block;
+}
+main div.formularz > form label input[type="checkbox"] ~ span:after {
+  content: "";
+  display: none;
+  width: 6px;
+  height: 13px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+  position: relative;
+  top: 4px;
+  left: 10px;
+}
+main div.formularz > form label input[type="checkbox"]:checked ~ span {
+  background-color: #208ce6;
+}
+main div.formularz > form label input[type="checkbox"]:checked ~ span::after {
+  display: block;
+}
+div.propozycja {
+  text-align: center;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+.error::placeholder,
+b {
+  color: #c03a3a;
+}
+main div.formularz > form > b {
+  font-size: 0.7em;
+}
+
+.produkt {
+  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #b8b8b8;
+  transition: all 0.2s ease-in 0s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.produkt:hover {
+  border: 1px solid #b8b8b8;
+  box-shadow: 0px 7px 20px -6px rgba(66, 68, 90, 1);
+  border-radius: 2%;
+}
+.produkt:nth-child(3n + 2) {
+  grid-column: 4 / 7;
+}
+.produkt:nth-child(3n + 3) {
+  grid-column: 7 / 10;
+}
+.produkt:nth-child(3n + 4) {
+  grid-column: 10 / -1;
+}
+.produkt a,
+.produkt > img {
+  height: 40%;
+}
+.produkt a img {
+  height: 100%;
+}
+.produkt div {
+  text-align: center;
+  color: #1e3030;
+}
+.produkt div.price {
+  font-weight: bold;
+}
+.produkt div form {
+  display: inline-block;
+}
+
+div.formularz div.produkt {
+  align-self: center;
+  width: calc(100% / 2);
+  height: 65vh;
+  border: 1px solid #b8b8b8;
+  box-shadow: 0px 7px 20px -6px rgba(66, 68, 90, 1);
+  border-radius: 2%;
+}
+div.formularz div.produkt form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  color: #1e3030;
+  position: relative;
+  height: 90%;
+}
+div.formularz div.produkt input,
+div.formularz div.produkt select,
+div.przycisk-produkt select,
+.p2 select,
+.filtry select,
+td select {
+  border: none;
+  border-bottom: 1px solid #b8b8b8;
+  background-color: inherit;
+  height: 30px;
+  font-size: 1em;
+  width: 90%;
+}
+td select {
+  outline-color: #2c4444;
+  color: #1e3030;
+  width: 75%;
+}
+td input[type="submit"] {
+  height: 30px;
+  width: 30px;
+  color: #1e3030;
+  font-size: 80%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b8b8b8;
+  border: none;
+  border-radius: 100%;
+  margin-left: 5px;
+}
+div.przycisk-produkt select,
+.p2 select {
+  width: 50px;
+  outline-color: #2c4444;
+}
+div.formularz div.produkt input[type="file"] {
+  display: none;
+}
+label.przeslanie-pliku {
+  border: 1px solid #b8b8b8;
+  display: inline-block;
+  cursor: pointer;
+  padding: calc((40% - 1em) / 2) 0px;
+  width: 90%;
+  text-align: center;
+  line-height: 3;
+}
+div.formularz div.produkt div input[type="number"] {
+  width: 40%;
+}
+div.formularz div.produkt div input[type="range"] {
+  width: 35%;
+  position: relative;
+  top: 10px;
+}
+div.formularz div.produkt div div#suwak-wynik {
+  width: 15%;
+  display: inline-block;
+  line-height: 30px;
+}
+div.formularz div.produkt input[type="submit"] {
+  background-color: #2c4444 !important;
+  color: snow !important;
+  width: 100%;
+  height: 35px !important;
+  border-radius: 20px;
+  line-height: 17px;
+  border: 2px solid #2c4444 !important;
+  font-size: 0.6em !important;
+  transition: 0.2s;
+  position: absolute;
+  bottom: -121px;
+}
+div.formularz div.produkt input[type="submit"]:hover {
+  background-color: snow !important;
+  color: #2c4444 !important;
+}
+div.formularz div.produkt div#cena-kontener {
+  height: 30px;
+  font-weight: bold;
+}
+div.produkt div.przycisk-produkt form,
+div.produkt div.przycisk-produkt {
+  width: 100%;
+}
+div.produkt div.przycisk-produkt form input[type="submit"],
+input[type="submit"].submit-oh {
+  background-color: snow;
+  color: #2c4444;
+  width: 50%;
+  height: 35px;
+  border-radius: 20px;
+  line-height: 17px;
+  border: 2px solid #2c4444;
+  font-size: 0.6em;
+  transition: 0.2s;
+}
+div.produkt div.przycisk-produkt form input[type="submit"]:hover,
+input[type="submit"].submit-oh:hover {
+  background-color: #2c4444;
+  color: snow;
+}
+
+.c2 {
+  grid-column: 4/10 !important;
+}
+.centered {
+  grid-column: 3/11;
+  text-align: center;
+  margin-top: 15%;
+}
+.usun-konto {
+  width: 30%;
+  height: 35px;
+  border-radius: 20px;
+  line-height: 17px;
+  font-size: 0.6em;
+  transition: 0.2s;
+  margin-top: 25px;
+  border: 2px solid #bd0404 !important;
+  background-color: snow !important;
+  color: #bd0404 !important;
+}
+.menu .usun-konto {
+  margin-top: 0 !important;
+}
+.usun-konto:hover {
+  color: snow !important;
+  background-color: #bd0404 !important;
+}
+.ilosc {
+  margin-bottom: 5px;
+}
+.p2 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 45px;
+  padding: 4px 0 4px 20px;
+}
+.p2 img {
+  width: 60px;
+}
+.p2 .t2 {
+  margin-right: 7vw;
+  width: 155px;
+  text-align: start;
+}
+.p2 input[type="image"] {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.f2 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.suma {
+  width: 150px !important;
+  text-align: start !important;
+}
+.t2 ~ .price {
+  width: 76px;
+  text-align: start !important;
+}
+.przycisk-produkt {
+  position: relative;
+}
+.przycisk-produkt b.ilosc-error {
+  position: absolute;
+  bottom: -5px;
+  right: 7.5px;
+  z-index: 99;
+  width: calc((100vw - 400px) / 4 - 30px);
+  background-color: rgba(30, 48, 48, 0.94);
+  border-radius: 15px;
+  height: 80px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.c3,
+.c3 form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+.c3 h2 {
+  margin: 0;
+}
+.table-container {
+  grid-column: 4/-1;
+  grid-row: 1/-1;
+}
+table {
+  border: 3px solid #1e3030;
+  border-collapse: collapse;
+  width: 100%;
+}
+thead > tr {
+  height: 50px;
+}
+th {
+  border: 3px solid #1e3030;
+}
+td {
+  border: 2px solid #1e3030;
+  text-align: center;
+  padding: 2px 5px;
+}
