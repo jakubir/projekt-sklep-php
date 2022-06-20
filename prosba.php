@@ -41,9 +41,10 @@
               <div class="menu-plus menu-u">
                   <?php
                     echo "
-                      Witaj, ".$_SESSION["imie_i_nazwisko"].".<br>
-                      Ostatnie logowanie:<br>".$_SESSION["data_ost_log"]."
-                      <hr>
+                      Witaj, ".$_SESSION["imie_i_nazwisko"].".<br>";
+                    if(isset($_SESSION["data_ost_log"]))
+                      echo "Ostatnie logowanie:<br>".$_SESSION["data_ost_log"];
+                    echo "<hr>
                       <form action='panelUzytkownika.php' method='post'><input type='submit' name='submitW' value='Twoje konto'></form>
                       <form action='process.php' method='post'><input type='submit' name='submitW' value='Wyloguj się'></form>";
                       $id = $_SESSION["id_u"];

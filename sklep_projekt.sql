@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 29 Maj 2022, 20:17
--- Wersja serwera: 10.4.17-MariaDB
--- Wersja PHP: 8.0.1
+-- Czas generowania: 13 Cze 2022, 10:05
+-- Wersja serwera: 10.4.20-MariaDB
+-- Wersja PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,8 +63,8 @@ CREATE TABLE `produkty` (
 --
 
 INSERT INTO `produkty` (`id`, `nazwa`, `ilosc`, `data_waznosci`, `kategoria_id`, `cena`, `marza`, `stan`) VALUES
-(1, 'Precel', 7, '2022-06-01', 3, '1.43', 10, 'w_sprzedaży'),
-(2, 'Bułka kajzerka', 19, '2022-05-31', 2, '0.25', 20, 'w_sprzedaży');
+(1, 'Precel', 5, '2022-06-15', 3, '1.43', 10, 'w_sprzedaży'),
+(2, 'Bułka kajzerka', 10, '2022-06-14', 2, '0.25', 20, 'w_sprzedaży');
 
 -- --------------------------------------------------------
 
@@ -91,9 +91,9 @@ CREATE TABLE `uzytkownicy` (
 --
 
 INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `haslo`, `rola`, `newsletter`, `autoryzacja`, `prosba`, `data_ost_log`, `kod`) VALUES
-(1, 'Jan', 'Kowalski', 'jko1.PAR@gmail.com', '$2y$10$24omLUWsjjqlSkw4hLFUYebyh0jcG8LbX/PPYggGRLfMwV7fviRAK', 'admin', NULL, 'tak', NULL, '2022-04-10', NULL),
-(3, 'Jakub', 'Irla', 'irlajakub@gmail.com', '$2y$10$Cd60tVws87buOCgatxZd0OcX7MupgnYpLbuQe6Q0CmrIsO1HVXULC', 'owner', NULL, 'tak', NULL, '2022-05-29', NULL),
-(5, 'Tomasz', 'Bułecki', 'tbulecki@gmail.com', '$2y$10$cGxCzqXdO45N/oYeRXb.m.y557mP9OoqI4kIro3OStwhDCqQye/nW', 'user', 'tak', 'tak', NULL, '2022-05-28', NULL),
+(1, 'Jan', 'Kowalski', 'jko1.PAR@gmail.com', '$2y$10$24omLUWsjjqlSkw4hLFUYebyh0jcG8LbX/PPYggGRLfMwV7fviRAK', 'admin', NULL, 'tak', NULL, '2022-06-06', NULL),
+(3, 'Jakub', 'Irla', 'irlajakub@gmail.com', '$2y$10$Cd60tVws87buOCgatxZd0OcX7MupgnYpLbuQe6Q0CmrIsO1HVXULC', 'owner', NULL, 'tak', NULL, '2022-06-13', NULL),
+(5, 'Tomasz', 'Bułecki', 'tbulecki@gmail.com', '$2y$10$cGxCzqXdO45N/oYeRXb.m.y557mP9OoqI4kIro3OStwhDCqQye/nW', 'user', 'tak', 'tak', NULL, '2022-06-13', NULL),
 (6, 'Charles', 'Baguette', 'charlesbagu@gmail.com', '$2y$10$cGxCzqXdO45N/oYeRXb.m.y557mP9OoqI4kIro3OStwhDCqQye/nW', 'user', 'tak', 'tak', NULL, '2022-05-26', NULL);
 
 -- --------------------------------------------------------
@@ -116,9 +116,10 @@ CREATE TABLE `zamowienia` (
 
 INSERT INTO `zamowienia` (`id`, `data`, `id_uzytkownika`, `stan`, `data_przedawnienia`) VALUES
 (5, '2022-04-22 13:26:31', 5, 'dostarczono', NULL),
-(6, '2022-04-23 06:11:38', 5, 'oczekuje', NULL),
-(8, '2022-05-28 13:46:43', 5, 'do realizacji', NULL),
-(9, '2022-05-26 17:42:53', 6, 'dostarczono', NULL);
+(6, '2022-04-23 06:11:38', 5, 'dostarczono', NULL),
+(8, '2022-05-25 13:46:43', 5, 'dostarczono', NULL),
+(9, '2022-05-26 17:42:53', 6, 'dostarczono', NULL),
+(10, '2022-06-13 07:57:39', 5, 'oczekuje', NULL);
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,9 @@ INSERT INTO `zamowione_produkty` (`id`, `id_produktu`, `ilosc`, `id_zamowienia`)
 (9, 1, 2, 5),
 (10, 2, 6, 8),
 (11, 1, 2, 8),
-(12, 2, 10, 9);
+(12, 2, 10, 9),
+(13, 2, 9, 10),
+(14, 1, 2, 10);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -209,13 +212,13 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `zamowienia`
 --
 ALTER TABLE `zamowienia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT dla tabeli `zamowione_produkty`
 --
 ALTER TABLE `zamowione_produkty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ograniczenia dla zrzutów tabel

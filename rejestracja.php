@@ -20,7 +20,7 @@
     <nav>
       <div class="container">
         <div class="logo">
-          <a href="index.php">POL & ROLLS</a>
+          <a>POL & ROLLS</a>
         </div>
       </div>
     </nav>

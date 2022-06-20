@@ -20,7 +20,7 @@
     <nav>
       <div class="container">
         <div class="logo">
-          <a href="index.php">POL & ROLLS</a>
+          <a>POL & ROLLS</a>
         </div>
       </div>
     </nav>
@@ -66,11 +66,6 @@
 
             <input type="submit" name="submitL" value="Zaloguj się">
         </form>
-        <div>
-          email: irlajakub@gmail.com
-          <br>
-          haslo: eq$d4Zc0
-        </div>
         <div class="propozycja">Nie masz konta? <a href="rejestracja.php">Zarejestruj się!</a></div>
       </div>
     </main>

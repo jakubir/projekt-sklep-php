@@ -44,9 +44,10 @@ if (!isset($_SESSION["zalogowany"]) || $_SESSION["zalogowany"] == false) {
             <div class="menu-plus menu-u">
               <?php
               echo "
-                    Witaj, " . $_SESSION["imie_i_nazwisko"] . ".<br>
-                    Ostatnie logowanie:<br>" . $_SESSION["data_ost_log"] . "
-                    <hr>
+                    Witaj, " . $_SESSION["imie_i_nazwisko"] . ".<br>";
+                    if(isset($_SESSION["data_ost_log"]))
+                      echo "Ostatnie logowanie:<br>".$_SESSION["data_ost_log"];
+                    echo "<hr>
                     <form action='process.php' method='post'><input type='submit' name='submitW' value='Wyloguj się'></form>";
               $id = $_SESSION["id_u"];
               $query = "SELECT `prosba` FROM `uzytkownicy` WHERE `id` LIKE '$id'";
@@ -131,7 +132,7 @@ if (!isset($_SESSION["zalogowany"]) || $_SESSION["zalogowany"] == false) {
     <div class="centered" style="margin: 0;">
       <h2>Historia zakupów</h2>
       <?php
-      $query = "SELECT SUM(ROUND(zp.`ilosc` * (p.`cena` * ((p.`marza` / 100) + 1)), 2)), SUM(zp.`ilosc`), z.`data`, z.`stan`, z.`id` FROM zamowienia z JOIN zamowione_produkty zp ON z.`id` = zp.`id_zamowienia` JOIN produkty p ON zp.`id_produktu` = p.`id` JOIN uzytkownicy u ON z.`id_uzytkownika` = u.`id` WHERE u.`id` LIKE '$id' AND z.`stan` NOT LIKE 'koszyk' GROUP BY z.`id`";
+      $query = "SELECT SUM(ROUND(zp.`ilosc` * (p.`cena` * ((p.`marza` / 100) + 1)), 2)), SUM(zp.`ilosc`), z.`data`, z.`stan`, z.`id` FROM zamowienia z JOIN zamowione_produkty zp ON z.`id` = zp.`id_zamowienia` JOIN produkty p ON zp.`id_produktu` = p.`id` JOIN uzytkownicy u ON z.`id_uzytkownika` = u.`id` WHERE u.`id` LIKE '$id' AND z.`stan` NOT LIKE 'koszyk' GROUP BY z.`id` ORDER BY z.`id` DESC";
       $result = mysqli_query($link, $query);
       while ($wynik = mysqli_fetch_row($result)) {
         echo "<div>

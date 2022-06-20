@@ -86,7 +86,7 @@ if(!$link){
         if(empty($imie)){
 			$blad = true;
 			$_SESSION["imie_error"] = 2;
-		}elseif(!preg_match('/^[A-ZŁŚ]{1}+[a-ząćęńóśźż]+$/', $imie)){
+		}elseif(!preg_match('/^[A-ZŁŚ]{1}+[a-ząćęłńóśźż]+$/', $imie)){
           	$blad = true;
           	$_SESSION["imie_error"] = $imie;
         }else{
@@ -117,6 +117,8 @@ if(!$link){
 			$haslo_hash = password_hash($haslo, PASSWORD_BCRYPT);
 			$_SESSION["zalogowany"] = true;
 			$_SESSION["admin"] = false;
+            $_SESSION["owner"] = false;
+            $_SESSION["data_ost_log"] = date("d-m-Y");
 			$_SESSION["imie_i_nazwisko"] = $imie.' '.$nazwisko;
 			$_SESSION["autoryzacja"] = false;
 			$query = "INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `haslo`, `rola`, `newsletter`) VALUES (NULL, '$imie', '$nazwisko', '$email', '$haslo_hash', 'user', '$newsletter');";

@@ -50,9 +50,10 @@
               <div class="menu-plus menu-u">
                 <?php
                   echo "
-                    Witaj, ".$_SESSION["imie_i_nazwisko"]."<br>
-                    Ostatnie logowanie:<br>".$_SESSION["data_ost_log"]."
-                    <hr>";
+                    Witaj, ".$_SESSION["imie_i_nazwisko"]."<br>";
+                    if(isset($_SESSION["data_ost_log"]))
+                      echo "Ostatnie logowanie:<br>".$_SESSION["data_ost_log"];
+                    echo "<hr>";
                     if(!isset($_SESSION["admin"]) OR $_SESSION["admin"] == false){
                       echo "<form action='panelUzytkownika.php' method='post'><input type='submit' name='submit' value='Twoje konto'></form>";
                     }
